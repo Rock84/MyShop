@@ -1,11 +1,22 @@
-from .user import (UserDetail, UserLogin, UserRegisterForm, UserRechangePassword,
-                   UserForgottenPassword)
+from .category import CategoryBase, CategoryCreate
+from .product import ProductBase, ProductCreate
+from .user import (
+    UserDetail,
+    UserLogin,
+    UserRegisterForm,
+    UserRechangePassword,
+    UserForgottenPassword,
+)
+
 
 __all__ = [
-    'UserDetail',
-    'UserLogin',
-    'UserRegisterForm',
-    'UserRechangePassword',
-    'UserForgottenPassword',
-
+    "CategoryBase",
+    "CategoryCreate",
+    "ProductBase",
+    "ProductCreate",
+    "UserDetail",
+    "UserLogin",
+    "UserRegisterForm",
+    "UserRechangePassword",
+    "UserForgottenPassword",
 ]

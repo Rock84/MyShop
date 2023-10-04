@@ -1,6 +1,6 @@
 FROM python:3.10.12-alpine
 
-WORKDIR /api
+WORKDIR /app
 
 COPY . /app
 
