@@ -1,4 +1,8 @@
 from pydantic import BaseModel, ConfigDict
-from pydantic_settings import BaseSettings
 
-class
+
+class DTO(BaseModel):
+    model_config = ConfigDict(
+        str_strip_whitespace=True,
+        from_attributes=True
+    )
