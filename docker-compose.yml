@@ -1,0 +1,32 @@
+version: '3.9'
+services:
+  app:
+    restart: always
+    build: ./src
+    env_file:
+      - .env
+    command: sh -c "uvicorn main:app --reload --workers 4 --host 0.0.0.0"
+    logging:
+      options:
+        max-size: '500M'
+        max-file: '5'
+    ports:
+      - 8001:8000
+    depends_on:
+      - data_base
+    volumes:
+      - .:/src
+
+  data_base:
+    restart: always
+    image: "postgres:11.21-bullseye"
+    container_name: data_base
+#    volumes:
+#      - ./data_base/:/var/lib/postgresql/data
+    environment:
+#      PGDATA: "/var/lib/postgresql/pgdata"
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 5433:5432
