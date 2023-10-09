@@ -5,7 +5,7 @@ services:
     build: .
     env_file:
       - .env
-    command: sh -c "uvicorn main:app --host 0.0.0.0"
+    command: sh -c "uvicorn main:app --reload --host 0.0.0.0"
     logging:
       options:
         max-size: '500M'

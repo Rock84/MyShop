@@ -1,17 +1,14 @@
-from sqlalchemy.ext.asyncio import async_sessionmaker
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, declared_attr
 
-from src.settings.settings import engine
+from src.settings.settings import engine, get_session
 
 
 class Base(DeclarativeBase):
     id: Mapped[str] = mapped_column(primary_key=True)
 
-    async def get_session(self):
-        async_session = async_sessionmaker(engine, expire_on_commit=False)
-        async with async_session as session:
-            yield session
-            await session.close()
+    engine_base = engine
+    session_base = get_session()
 
     @declared_attr
     def __tablename__(cls) -> str:
