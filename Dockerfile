@@ -1,10 +1,10 @@
-FROM python:3.11.6-alpine3.18
+FROM python:3.11.5-alpine3.18
 
-WORKDIR /src
+WORKDIR /app
 
-COPY . /src
+COPY . /app
 
-RUN pip install --no-cache-dir --upgrade -r /src/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # указывает что не нужно создаваь кэш файлы с байт кодом
 ENV PYTHONDONTWRITEBYTECODE 1
