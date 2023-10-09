@@ -1,4 +1,3 @@
-from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, declared_attr
 
 from src.settings.settings import engine, get_session
@@ -6,9 +5,8 @@ from src.settings.settings import engine, get_session
 
 class Base(DeclarativeBase):
     id: Mapped[str] = mapped_column(primary_key=True)
-
-    engine_base = engine
-    session_base = get_session()
+    engine_base: Mapped[str] = mapped_column(engine)
+    session_base: Mapped[str] =mapped_column(get_session())
 
     @declared_attr
     def __tablename__(cls) -> str:
