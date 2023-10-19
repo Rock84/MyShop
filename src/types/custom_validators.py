@@ -15,6 +15,6 @@ def is_alpha(v: str) -> str:
     return v
 
 def is_mobile_number(v: str) -> str:
-    if MOBIL_NUMBER.fullmatch(v):
+    if MOBIL_NUMBER.fullmatch(v) is None:
         raise ValueError("Incorrect mobile number")
     return v

@@ -3,8 +3,8 @@ services:
   app:
     restart: always
     build: .
-    env_file:
-      - .env
+#    env_file:
+#      - .env
     command: sh -c "uvicorn main:app --reload --host 0.0.0.0"
     logging:
       options:
@@ -18,12 +18,14 @@ services:
       - .:/app
 
   data_base:
-    restart: always
-    image: "postgres:11-alpine3.18"
-    container_name: data_base
+    image: postgres:15-alpine3.18
+    container_name: shop
+    hostname: shop
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
-    ports:
-      - '5433:5432'
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    restart: always
+#    ports:
+#      - '5433:5432'

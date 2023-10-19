@@ -1,4 +1,4 @@
-from typing import Self
+from typing import Self, Optional
 
 from pydantic import Field, model_validator, PositiveInt
 from slugify import slugify
@@ -6,7 +6,7 @@ from slugify import slugify
 from .base import DTO
 from .custom_types import AlphaStr
 
-class CategoryBase(DTO):
+class CategoryCreateForm(DTO):
     name: AlphaStr = Field(
         default=...,
         min_length=4,
@@ -15,9 +15,9 @@ class CategoryBase(DTO):
         description='Main category catalog'
     )
 
-class CategoryCreate(CategoryBase):
+class CategoryDetail(CategoryCreateForm):
 
-    id: PositiveInt = Field(
+    id: Optional[PositiveInt] = Field(
         default=None,
         title='Category ID',
         description='Main category ID'

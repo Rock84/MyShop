@@ -1,4 +1,4 @@
-from .category import CategoryBase, CategoryCreate
+from .category import CategoryDetail, CategoryCreateForm
 from .product import ProductBase, ProductCreate
 from .user import (
     UserDetail,
@@ -10,8 +10,8 @@ from .user import (
 
 
 __all__ = [
-    "CategoryBase",
-    "CategoryCreate",
+    "CategoryDetail",
+    "CategoryCreateForm",
     "ProductBase",
     "ProductCreate",
     "UserDetail",
