@@ -58,11 +58,9 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
-    configuration = config.get_section(config.config_ini_section, {})
-    configuration['sqlalchemy.url'] = Base.engine.url
     connectable = engine_from_config(
-        configuration=configuration,
-        prefix="sqlalchemy.",
+        config.get_section(config.config_ini_section, {}) | {'sqlalchemy.url': Base.engine.url},
+        prefix='sqlalchemy.',
         poolclass=pool.NullPool,
     )
 

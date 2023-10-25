@@ -79,12 +79,12 @@ class Product(Base):
     price: Mapped[float | None]
 
     category_id: Mapped[int] = mapped_column(
-        ForeignKey(column="Category.id", ondelete="CASCADE"), nullable=False, index=True
+        ForeignKey(column="category.id", ondelete="CASCADE"), nullable=False, index=True
     )
     category: Mapped["Category"] = relationship(back_populates="products")
 
     brand_id: Mapped[int] = mapped_column(
-        ForeignKey(column="Brand.id", ondelete="CASCADE"), nullable=False, index=True
+        ForeignKey(column="brand.id", ondelete="CASCADE"), nullable=False, index=True
     )
     brand: Mapped["Brand"] = relationship(back_populates="brands", cascade="all")
 

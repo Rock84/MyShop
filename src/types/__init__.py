@@ -7,6 +7,7 @@ from .user import (
     UserRechangePassword,
     UserForgottenPassword,
 )
+from .settings import Settings
 
 
 __all__ = [
@@ -19,4 +20,5 @@ __all__ = [
     "UserRegisterForm",
     "UserRechangePassword",
     "UserForgottenPassword",
+    "Settings",
 ]

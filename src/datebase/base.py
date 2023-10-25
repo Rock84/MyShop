@@ -11,7 +11,7 @@ from sqlalchemy.orm import (
 class Base(DeclarativeBase):
     id: Mapped[str] = mapped_column(primary_key=True)
 
-    engine = create_engine(url='postgresql://postgres:postgres@shop:5432/postgres')
+    engine = create_engine(url='postgresql://admin:admin@0.0.0.0:5433/admin')
     session = sessionmaker(bind=engine)
 
     @declared_attr

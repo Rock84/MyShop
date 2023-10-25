@@ -3,13 +3,15 @@ services:
   app:
     restart: always
     build: .
-#    env_file:
-#      - .env
+    env_file:
+      - .env
     command: sh -c "uvicorn main:app --reload --host 0.0.0.0"
     logging:
       options:
         max-size: '500M'
         max-file: '5'
+#    environment:
+#      - DB_URL=postgresql://postgres@shop:5432/postgres
     ports:
       - '8001:8000'
     depends_on:
@@ -27,5 +29,5 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_HOST_AUTH_METHOD=trust
     restart: always
-#    ports:
-#      - '5433:5432'
+    ports:
+      - '5433:5432'
